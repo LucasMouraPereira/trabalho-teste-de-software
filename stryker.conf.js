@@ -1,18 +1,26 @@
-/**
- * @type {import('@stryker-mutator/api/core').StrykerOptions}
- */
- module.exports = {
-    mutator: "typescript",
-    packageManager: "yarn",
-    reporters: ['clear-text', 'progress', 'dots', 'dashboard', 'html'],
-    testFramework: "jest",
-    testRunner: "jest",
-    transpilers: ["typescript"],
-    coverageAnalysis: "perTest",
-    tsconfigFile: "tsconfig.json",
-    mutate: ["src/**/*.ts"],
-    plugins: ['@stryker-mutator/*'],
+module.exports = function(config) {
+  config.set({
+    mutator: 'typescript',
+    packageManager: 'yarn',
+    reporters: [
+      'clear-text',
+      'html',
+      'progress',
+      'dashboard',
+    ],
+    testRunner: 'jest',
+    transpilers: ['typescript'],
+    coverageAnalysis: 'off',
+    tsconfigFile: 'tsconfig.json',
+    mutate: [
+      'src/**/*.ts',
+      '!src/**/*.test.ts',
+      '!src/**/*.spec.ts',
+    ],
     jest: {
-      enableFindRelatedTests: false,
+      projectType: 'custom',
+      configFile: './jest.config.js',
+
     }
-  };
+  })
+}
