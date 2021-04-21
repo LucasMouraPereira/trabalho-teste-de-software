@@ -1,4 +1,3 @@
-![/doc/testing.png]
 # Teste de Software
 
 **Nome:** Lucas Moura Pereira
